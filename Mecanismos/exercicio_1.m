@@ -57,8 +57,11 @@ theta_trans_cruzado = (theta3_2- theta4_2)
 omega_2 = 10 %(Rad/s)
 
 % aberto
-omega_3_aberto = (a*omega_2*sind(theta4-theta2))/(b*sind(theta3-theta4))
-omega_4_aberto = (a*omega_2*sind(theta2-theta3))/(c*sind(theta4-theta3))
+for i = 1:2
+    omega_3_aberto(i) = (a*omega_2*sind(theta4(i)-theta2))/(b*sind(theta3(i)-theta4(i)))
+    omega_4_aberto(i) = (a*omega_2*sind(theta2-theta3(i)))/(c*sind(theta4(i)-theta3(i)))
+end
+
 
 j = sqrt(-1);
 
@@ -67,9 +70,10 @@ V_ba_aberto = b*omega_3_aberto*(-sind(theta3_2)+j*cosd(theta3_2))
 V_b_aberto = c*omega_4_aberto*(-sind(theta4_2)+j*cosd(theta4_2))
 
 % Cruzado
-
-omega_3_cruzado = (a*omega_2*sind(theta4_2-theta2))/(b*sind(theta3_2-theta4_2))
-omega_4_cruzado = (a*omega_2*sind(theta2-theta3_2))/(c*sind(theta4_2-theta3_2))
+for i = 1:2
+    omega_3_cruzado(i) = (a*omega_2*sind(theta4(i)-theta2))/(b*sind(theta3(i)-theta4(i)))
+    omega_4_cruzado(i) = (a*omega_2*sind(theta2-theta3(i)))/(c*sind(theta4(i)-theta3(i)))
+end
 
 V_a_cruzado = a*omega_2*(-sind(theta2)+j*cosd(theta2))
 V_ba_cruzado = b*omega_3_aberto*(-sind(theta3_22)+j*cosd(theta3_22))
